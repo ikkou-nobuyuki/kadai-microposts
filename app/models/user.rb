@@ -42,12 +42,12 @@ class User < ApplicationRecord
   
   # お気に入り登録
   def like(micropost)
-    favorites.find_or_create_by(micropost_id: micropost.id)
+    self.favorites.find_or_create_by(micropost_id: micropost.id)
   end
   
   # お気に入りから外す
   def unlike(micropost)
-    favorate = favorites.find_by(micropost_id: micropost.id)
+    favorate = self.favorites.find_by(micropost_id: micropost.id)
     favorate.destroy if favorate
   end
   
